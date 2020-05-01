@@ -3,7 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { AppLoading } from "expo";
 import { useFonts } from "@use-expo/font";
-import { FontMap } from './assets/Resources';
+import { FontMap, Colors } from './assets/Resources';
 import Navegacao from './navigation/Navegacao';
 
 
@@ -16,6 +16,8 @@ export default function App() {
   }
 
   return (
-    <Navegacao/>
+    <SafeAreaView style={{flex: 1, backgroundColor: Colors.colorPrimary}}>
+      <Navegacao/>
+    </SafeAreaView>
   );
 }
