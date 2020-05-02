@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text, TextInput, Button, ScrollView } from "react-native";
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import SegmentedControlTab from 'react-native-segmented-control-tab';
-import Global from "../Global";
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, Fonts } from '../assets/Resources';
 import CustomDatePicker from "../components/CustomDatePicker";
+import Global from "../Global";
 
 const InputValue = ({ state, setState }) => {
 
@@ -21,7 +21,11 @@ const InputValue = ({ state, setState }) => {
             paddingBottom: 20
         },
         icon: {
-            padding: 10,
+            paddingRight: 10,
+            paddingLeft: 10,
+            color: '#424242',
+            fontFamily: Fonts.robotoLight,
+            fontSize: 45
         },
         input: {
             flex: 1,
@@ -31,17 +35,17 @@ const InputValue = ({ state, setState }) => {
             paddingLeft: 0,
             backgroundColor: '#ffff',
             color: '#424242',
-            fontFamily: Fonts.robotoRegular,
+            fontFamily: Fonts.robotoLight,
             fontSize: 40
         }
     })
 
     return (
         <View style={styles.section}>
-            <Icon style={styles.icon} name="coin" size={55} color={"#FFDF00"} />
+            <Text style={styles.icon}>$</Text>
             <TextInput
                 style={styles.input}
-                placeholder="Valor"
+                placeholder="0.00"
                 underlineColorAndroid="transparent"
                 keyboardType="numeric"
                 onChangeText={inputValue => setState({ ...state, value: inputValue })}
@@ -118,7 +122,7 @@ const AddDespRendaScreen = () => {
             />
 
             <Icon.Button
-                name="plus-circle-outline"
+                name="plus"
                 backgroundColor="#ffff"
                 size={50}
                 color="#d3d3d3"
