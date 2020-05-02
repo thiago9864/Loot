@@ -65,5 +65,10 @@ export var Colors = {
     verde1 : "#64d27c",
     verde2 : "#66b43a",
 
+    /* outras cores */
+
+    cinzaClaro: '#eeeeee',
+    verdeBorda: '#0D8319'
+
 }
 

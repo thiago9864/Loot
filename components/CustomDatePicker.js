@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableWithoutFeedback, FlatList } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons'
 import { Fonts, Colors } from '../assets/Resources';
 import DateHelper from '../utils/DateHelper';
 
@@ -18,13 +17,12 @@ export default class CustomDatePicker extends React.Component {
         this.state = {
             dia: DateHelper.getMonthDayInDate(this.dataReferencia),
             mes: DateHelper.getMonthInDate(this.dataReferencia),
-            ano: DateHelper.getYearInDate(this.dataReferencia)
+            ano: DateHelper.getYearInDate(this.dataReferencia),
+            horizontal : this.props.horizontal != null ? this.props.horizontal : false
         }
     }
 
     componentDidMount(){
-        console.log('componentDidMount');
-        console.log(this.state.mes);
         setTimeout(()=>{
             if(this.flatListDia){
                 this.flatListDia.scrollToIndex({animated: true, index: this.state.dia-1, viewOffset: 0, viewPosition: 0.5});
@@ -45,6 +43,18 @@ export default class CustomDatePicker extends React.Component {
             mes: m,
             ano: a
         });
+
+        if (d != null && m != null && a != null) {
+            //data pode ser validada
+            let dateValidar = new Date(a, m, d);
+            if (dateValidar) {
+                let validDateString = DateHelper.stringWithDateAndFormat(dateValidar, this.dateFormat);
+                
+                if (this.props.onSelectDate) {
+                    this.props.onSelectDate(validDateString);
+                }
+            }
+        } 
     }
 
     render(){
@@ -75,22 +85,22 @@ export default class CustomDatePicker extends React.Component {
         for (let d = 1; d <= DateHelper.getNumberOfDaysInMonth(this.dataReferencia); d++) {
             dias.push(d);
         }
-        console.log(this.props);
+        
         return (
-            <View style={[{ flexDirection: 'row' }, this.props.style]}>
-                <View style={DatePickerStyle.dateLists}>
+            <View style={[{ flexDirection: 'column' }, DatePickerStyle.container, this.props.style]}>
+                <View style={this.state.horizontal ? DatePickerStyle.dateListsHor : DatePickerStyle.dateListsVer}>
                     <FlatList
                         data={dias}
                         ref={ref => { this.flatListDia = ref; }}
                         onScrollToIndexFailed={(e)=>{console.log(e)}}
                         keyExtractor={item => item.toString()}
-                        style={DatePickerStyle.flatList}
+                        style={this.state.horizontal ? DatePickerStyle.flatListHor : DatePickerStyle.flatListVer}
                         scrollEnabled={true}
-                        horizontal={false}
+                        horizontal={this.state.horizontal}
                         renderItem={({ item }) => (
                             ////////////
                             <TouchableWithoutFeedback onPress={() => { this.updateData(item, this.state.mes, this.state.ano); }}>
-                                <View style={DatePickerStyle.itemContainer}>
+                                <View style={this.state.horizontal ? DatePickerStyle.itemContainerHor : DatePickerStyle.itemContainerVer}>
                                     <View style={item == this.state.dia ? DatePickerStyle.itemContainerSelection : null} />
                                     <Text style={[DatePickerStyle.itemText, item == this.state.dia ? DatePickerStyle.itemTextSelection : null]}>{item}</Text>
                                 </View>
@@ -98,19 +108,19 @@ export default class CustomDatePicker extends React.Component {
                             ////////////
                         )}
                     />
-                    <View style={DatePickerStyle.linhaDivisor} />
+                    <View style={this.state.horizontal ? DatePickerStyle.linhaDivisorHor : DatePickerStyle.linhaDivisorVer} />
                     <FlatList
                         data={meses}
                         ref={ref => { this.flatListMes = ref; }}
                         onScrollToIndexFailed={(e)=>{console.log(e)}}
                         keyExtractor={item => item.id.toString()}
-                        style={DatePickerStyle.flatList}
+                        style={this.state.horizontal ? DatePickerStyle.flatListHor : DatePickerStyle.flatListVer}
                         scrollEnabled={true}
-                        horizontal={false}
+                        horizontal={this.state.horizontal}
                         renderItem={({ item }) => (
                             ////////////
                             <TouchableWithoutFeedback onPress={() => { this.updateData(this.state.dia, item.id, this.state.ano); }}>
-                                <View style={DatePickerStyle.itemContainer}>
+                                <View style={this.state.horizontal ? DatePickerStyle.itemContainerHor : DatePickerStyle.itemContainerVer}>
                                     <View style={item.id == this.state.mes ? DatePickerStyle.itemContainerSelection : null} />
                                     <Text style={[DatePickerStyle.itemText, item.id == this.state.mes ? DatePickerStyle.itemTextSelection : null]}>{item.nome}</Text>
                                 </View>
@@ -118,19 +128,19 @@ export default class CustomDatePicker extends React.Component {
                             ////////////
                         )}
                     />
-                    <View style={DatePickerStyle.linhaDivisor} />
+                    <View style={this.state.horizontal ? DatePickerStyle.linhaDivisorHor : DatePickerStyle.linhaDivisorVer} />
                     <FlatList
                         data={anos}
                         ref={ref => { this.flatListAno = ref; }}
                         onScrollToIndexFailed={(e)=>{console.log(e)}}
                         keyExtractor={item => item.toString()}
-                        style={DatePickerStyle.flatList}
+                        style={this.state.horizontal ? DatePickerStyle.flatListHor : DatePickerStyle.flatListVer}
                         scrollEnabled={true}
-                        horizontal={false}
+                        horizontal={this.state.horizontal}
                         renderItem={({ item }) => (
                             ////////////
                             <TouchableWithoutFeedback onPress={() => { this.updateData(this.state.dia, this.state.mes, item); }}>
-                                <View style={DatePickerStyle.itemContainer}>
+                                <View style={this.state.horizontal ? DatePickerStyle.itemContainerHor : DatePickerStyle.itemContainerVer}>
                                     <View style={item == this.state.ano ? DatePickerStyle.itemContainerSelection : null} />
                                     <Text style={[DatePickerStyle.itemText, item == this.state.ano ? DatePickerStyle.itemTextSelection : null]}>{item}</Text>
                                 </View>
@@ -145,14 +155,28 @@ export default class CustomDatePicker extends React.Component {
 }
 
 const DatePickerStyle = StyleSheet.create({
-    dateLists: {
+    container: {
+        marginHorizontal: 16,
+        borderColor: Colors.verdeBorda,
+        borderWidth: 1,
+        borderRadius: 5,
+        backgroundColor: Colors.verde2
+    },  
+    dateListsVer: {
         flexDirection: 'row',
     },
-    flatList: {
+    dateListsHor: {
+        flexDirection: 'column',
+    },
+    flatListVer: {
         width: 80,
         height: 120,
     },
-    itemContainer: {
+    flatListHor: {
+        width: '100%',
+        height: 50,
+    },
+    itemContainerVert: {
         width: 80,
         height: 40,
         paddingHorizontal: 8,
@@ -160,26 +184,37 @@ const DatePickerStyle = StyleSheet.create({
         alignContent: 'center',
         alignItems: 'center',
     },
+    itemContainerHor: {
+        width: 50,
+        height: 50,
+        justifyContent: 'center',
+        alignContent: 'center',
+        alignItems: 'center',
+        padding: 0
+    },
     itemContainerSelection: {
         position: 'absolute',
         width: 40,
         height: 40,
-        backgroundColor: Colors.verde1,
-        borderRadius: 8,
+        backgroundColor: Colors.white,
+        borderRadius: 20,
     },
     itemText: {
         fontSize: 14,
-        fontFamily: Fonts.openSansRegular,
-        color: Colors.black,
-    },
-    itemTextSelection: {
+        fontFamily: Fonts.robotoMedium,
         color: Colors.white,
     },
-    linhaDivisor: {
+    itemTextSelection: {
+        color: Colors.verdeBorda,
+    },
+    linhaDivisorVer: {
         width: 1,
         height: '100%',
-        backgroundColor: Colors.azul2
+        backgroundColor: Colors.verde1
+    },
+    linhaDivisorHor: {
+        width: '100%',
+        height: 1,
+        backgroundColor: Colors.verdeBorda
     }
 });
-
-//export default CustomDatePicker;
