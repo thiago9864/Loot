@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { StyleSheet, View, TextInput, Button, ScrollView } from "react-native";
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import { StyleSheet, View, TextInput, ScrollView } from "react-native";
 import SegmentedControlTab from 'react-native-segmented-control-tab';
-import Global from "../Global";
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Colors, Fonts } from '../assets/Resources';
+import Global from "../Global";
 
 const InputValue = ({ state, setState }) => {
 
@@ -69,7 +69,7 @@ const AddDespRendaScreen = () => {
             backgroundColor: '#dcdcdc',
             color: '#505050',
             fontFamily: "Roboto",
-            fontSize: 20,
+            fontSize: 20
         },
         tabStyle: {
             padding: 10,

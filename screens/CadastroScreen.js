@@ -1,18 +1,79 @@
-import React from "react";
-import { StyleSheet, View, Text, Button } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, View, Text, Button, TextInput, ScrollView } from "react-native";
+import { Colors, Fonts } from '../assets/Resources';
 import Global from "../Global";
+
+const Categoria = (props) => {
+    return (
+        <View style={{flexDirection: "row", alignItems:'center', justifyContent: "center"}}>
+            <Text style={{flex:3}}>{props.title}</Text>
+            <TextInput
+                underlineColorAndroid="transparent"
+                style={{...styles.input, flex: 5}}
+                keyboardType="numeric"
+                onChangeText={props.callback}>
+            </TextInput>
+        </View>
+    )
+}
 
 const CadastroScreen = (props) => {
 
+    const [dados, setDados] = useState({})
+
     let onPressSalvar = () => {
+        console.log(dados)
         Global.getInstance().setLogado(true);
         Global.getInstance().updateObserverUsuario();
     }
     return (
-        <View style={styles.container}>
-            <Text>Tela de cadastro</Text>
-            <Button title={'Salvar'} onPress={onPressSalvar}/>
-        </View>
+        <ScrollView style={styles.container}>
+
+            <View style={styles.section}>
+
+                <Text style={{...styles.text}}>Nome:</Text>
+                <TextInput
+                    underlineColorAndroid="transparent"
+                    style={styles.input}
+                    onChangeText={text => setDados({ ...dados, nome: text })}>
+                </TextInput>
+
+                <Text style={styles.text}>E-mail:</Text>
+                <TextInput
+                    underlineColorAndroid="transparent"
+                    style={styles.input}
+                    onChangeText={text => setDados({ ...dados, email: text })}>
+                </TextInput>
+
+                <Text style={styles.text}>Qual é a sua renda mensal?</Text>
+                <TextInput
+                    underlineColorAndroid="transparent"
+                    style={styles.input}
+                    keyboardType="numeric"
+                    onChangeText={value => setDados({ ...dados, renda: value })}>
+                </TextInput>
+
+                <Text style={styles.text}>Qual é a sua renda mensal para as seguintes categorias:</Text>
+                
+                <Categoria title="Casa:" callback={value => setDados({ ...dados, casa: value })}/>
+
+                <Categoria title="Educação:" callback={value => setDados({ ...dados, educacao: value })}/>
+
+                <Categoria title="Alimentação:" callback={value => setDados({ ...dados, alimentacao: value })}/>
+
+                <Categoria title="Transporte:" callback={value => setDados({ ...dados, transporte: value })}/>
+
+                <Categoria title="Lazer:" callback={value => setDados({ ...dados, lazer: value })}/>
+
+                <View style={styles.section}>
+                    <Button 
+                        color={Colors.colorPrimary} 
+                        title={'Começar a usar'} 
+                        onPress={onPressSalvar}/>
+                </View>
+            </View>
+        </ScrollView>
+        
     );
 };
 
@@ -26,9 +87,29 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center",
+        flexDirection: "column"
     },
+    section: {
+        backgroundColor: '#fff',
+        marginBottom: 10,        
+        marginLeft: 25,
+        marginRight: 25,
+        paddingTop: 20,
+        paddingBottom: 20
+    },
+    text: {
+        marginTop: 10
+    },
+    input: {
+        padding: 10,
+        marginTop: 5,
+        marginBottom: 5,
+        borderRadius: 10,
+        backgroundColor: '#dcdcdc',
+        color: '#505050',
+        fontFamily: Fonts.robotoRegular,
+        fontSize: 15
+    }
 });
 
 export default CadastroScreen;
