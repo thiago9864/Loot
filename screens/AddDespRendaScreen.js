@@ -125,11 +125,12 @@ const AddDespRendaScreen = () => {
                 onPress={() => { console.log(despesa) }}
             />
 
-            <Text style={styles.labelData}>Data da Despesa</Text>
+            
 
             <CustomDatePicker
                 onSelectDate={(date) => { console.log('data:', date); }}
-                value={'01/05/2020'}
+                titulo={"Data da Despesa"}
+                value={null}//data no formato DD/MM/YYYY, se estiver nulo ele pega a data atual
                 horizontal={true}
             />
         </ScrollView>
