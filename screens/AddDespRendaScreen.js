@@ -131,51 +131,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
-    },
-    logo: {
-        fontWeight: "bold",
-        fontSize: 30,
-        color: "#fb5b5a",
-        marginBottom: 40
-    },
-    btn: {
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        width: 220
-    },
-    googleLoginBtn: {
-        backgroundColor: 'red',
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        borderRadius: 10,
-        marginHorizontal: 10,
-        marginTop: 5,
-        marginBottom: 5
-    },
-    fbLoginBtn: {
-        backgroundColor: '#4267b2',
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        borderRadius: 10,
-        marginTop: 5,
-        marginBottom: 10
-    },
-    twitterLoginBtn: {
-        backgroundColor: '#1DA1F2',
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        borderRadius: 10,
-        marginTop: 5,
-        marginBottom: 10
-    },
-    logoutBtn: {
-        backgroundColor: 'grey',
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        borderRadius: 20,
-        position: "absolute",
-        bottom: 0
-    },
+    }
 });
 
 export default AddDespRendaScreen;
