@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Text, Button } from "react-native";
 import Global from "../Global";
+import CustomDatePicker from "../components/CustomDatePicker";
 
 const AddDespRendaScreen = (props) => {
     let onPressSair = () => {
@@ -10,7 +11,12 @@ const AddDespRendaScreen = (props) => {
     return (
         <View style={styles.container}>
             <Text>Tela de cadastro de despesas e rendas</Text>
-            <Button title={'Sair'} onPress={onPressSair}/>
+            <Button title={'Sair'} onPress={onPressSair} />
+            <CustomDatePicker
+                onSelectDate={(date) => { console.log('data:', date); }}
+                value={'01/05/2020'}
+                style={styles.datepicker}
+            />
         </View>
     )
 };
@@ -28,6 +34,9 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
+    datepicker: {
+        backgroundColor: "#eee",
+    }
 });
 
 export default AddDespRendaScreen;
