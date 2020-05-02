@@ -1,15 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet, View, Text, Button, TextInput, ScrollView } from "react-native";
 import { Colors, Fonts } from '../assets/Resources';
 import Global from "../Global";
 
+import { withFormik } from 'formik';
+
+const onPressSalvar = (values) => {
+    console.log(values)
+    Global.getInstance().setLogado(true);
+    Global.getInstance().updateObserverUsuario();
+}
+
 const Categoria = (props) => {
     return (
-        <View style={{flexDirection: "row", alignItems:'center', justifyContent: "center"}}>
-            <Text style={{flex:3}}>{props.title}</Text>
+        <View style={{ flexDirection: "row", alignItems: 'center', justifyContent: "center" }}>
+            <Text style={{ flex: 3 }}>{props.title}</Text>
             <TextInput
                 underlineColorAndroid="transparent"
-                style={{...styles.input, flex: 5}}
+                style={{ ...styles.input, flex: 5 }}
                 keyboardType="numeric"
                 onChangeText={props.callback}>
             </TextInput>
@@ -19,30 +27,23 @@ const Categoria = (props) => {
 
 const CadastroScreen = (props) => {
 
-    const [dados, setDados] = useState({})
-
-    let onPressSalvar = () => {
-        console.log(dados)
-        Global.getInstance().setLogado(true);
-        Global.getInstance().updateObserverUsuario();
-    }
     return (
         <ScrollView style={styles.container}>
 
             <View style={styles.section}>
 
-                <Text style={{...styles.text}}>Nome:</Text>
+                <Text style={{ ...styles.text }}>Nome:</Text>
                 <TextInput
                     underlineColorAndroid="transparent"
                     style={styles.input}
-                    onChangeText={text => setDados({ ...dados, nome: text })}>
+                    onChangeText={text => props.setFieldValue('nome', text)}>
                 </TextInput>
 
                 <Text style={styles.text}>E-mail:</Text>
                 <TextInput
                     underlineColorAndroid="transparent"
                     style={styles.input}
-                    onChangeText={text => setDados({ ...dados, email: text })}>
+                    onChangeText={text => props.setFieldValue('email', text)}>
                 </TextInput>
 
                 <Text style={styles.text}>Qual é a sua renda mensal?</Text>
@@ -50,30 +51,30 @@ const CadastroScreen = (props) => {
                     underlineColorAndroid="transparent"
                     style={styles.input}
                     keyboardType="numeric"
-                    onChangeText={value => setDados({ ...dados, renda: value })}>
+                    onChangeText={value => props.setFieldValue('renda', value)}>
                 </TextInput>
 
                 <Text style={styles.text}>Qual é a sua renda mensal para as seguintes categorias:</Text>
-                
-                <Categoria title="Casa:" callback={value => setDados({ ...dados, casa: value })}/>
 
-                <Categoria title="Educação:" callback={value => setDados({ ...dados, educacao: value })}/>
+                <Categoria title="Casa:" callback={value => props.setFieldValue('casa', value)} />
 
-                <Categoria title="Alimentação:" callback={value => setDados({ ...dados, alimentacao: value })}/>
+                <Categoria title="Educação:" callback={value => props.setFieldValue('educacao', value)} />
 
-                <Categoria title="Transporte:" callback={value => setDados({ ...dados, transporte: value })}/>
+                <Categoria title="Alimentação:" callback={value => props.setFieldValue('alimentacao', value)} />
 
-                <Categoria title="Lazer:" callback={value => setDados({ ...dados, lazer: value })}/>
+                <Categoria title="Transporte:" callback={value => props.setFieldValue('transporte', value)} />
+
+                <Categoria title="Lazer:" callback={value => props.setFieldValue('lazer', value)} />
 
                 <View style={styles.section}>
-                    <Button 
-                        color={Colors.colorPrimary} 
-                        title={'Começar a usar'} 
-                        onPress={onPressSalvar}/>
+                    <Button
+                        color={Colors.colorPrimary}
+                        title={'Começar a usar'}
+                        onPress={props.handleSubmit} />
                 </View>
             </View>
         </ScrollView>
-        
+
     );
 };
 
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
     },
     section: {
         backgroundColor: '#fff',
-        marginBottom: 10,        
+        marginBottom: 10,
         marginLeft: 25,
         marginRight: 25,
         paddingTop: 20,
@@ -112,4 +113,19 @@ const styles = StyleSheet.create({
     }
 });
 
-export default CadastroScreen;
+export default withFormik({
+    mapPropsToValues: () => ({
+        nome: '',
+        email: '', 
+        renda: 0.0,
+        casa: 0.0,
+        educacao: 0.0,
+        alimentacao: 0.0,
+        transporte: 0.0,
+        lazer: 0.0
+    }),
+
+    handleSubmit: (values) => {
+        onPressSalvar(values)
+    }
+})(CadastroScreen);
