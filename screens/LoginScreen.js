@@ -15,7 +15,7 @@ const LoginScreen = (props) => {
                     onPress={() => props.navigation.navigate(IndicesNavegacao.cadastro)}
                 >
                     Login with Google
-          </Icon.Button>
+                </Icon.Button>
             </View>
 
             <View style={styles.btn}>
@@ -26,7 +26,7 @@ const LoginScreen = (props) => {
                     onPress={() => props.navigation.navigate(IndicesNavegacao.cadastro)}
                 >
                     Login with Facebook
-          </Icon.Button>
+                </Icon.Button>
             </View>
 
             <View style={styles.btn}>
@@ -37,7 +37,7 @@ const LoginScreen = (props) => {
                     onPress={() => props.navigation.navigate(IndicesNavegacao.cadastro)}
                 >
                     Login with Twitter
-          </Icon.Button>
+                </Icon.Button>
             </View>
         </View>
     );
@@ -56,41 +56,35 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
-    logo:{
-      fontWeight: "bold",
-      fontSize: 30,
-      color: "#fb5b5a",
-      marginBottom: 40
-    },
     btn: {
-      paddingVertical: 10,
-      paddingHorizontal: 20,
-      width: 220
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        width: 220
     },
     googleLoginBtn: {
-      backgroundColor: 'red',
-      paddingVertical: 10,
-      paddingHorizontal: 20,
-      borderRadius: 10,
-      marginHorizontal: 10,
-      marginTop: 5,
-      marginBottom: 5
+        backgroundColor: 'red',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 10,
+        marginHorizontal: 10,
+        marginTop: 5,
+        marginBottom: 5
     },
     fbLoginBtn: {
-      backgroundColor: '#4267b2',
-      paddingVertical: 10,
-      paddingHorizontal: 20,
-      borderRadius: 10,
-      marginTop: 5,
-      marginBottom: 10
+        backgroundColor: '#4267b2',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 10,
+        marginTop: 5,
+        marginBottom: 10
     },
     twitterLoginBtn: {
-      backgroundColor: '#1DA1F2',
-      paddingVertical: 10,
-      paddingHorizontal: 20,
-      borderRadius: 10,
-      marginTop: 5,
-      marginBottom: 10
+        backgroundColor: '#1DA1F2',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 10,
+        marginTop: 5,
+        marginBottom: 10
     },
 });
 
