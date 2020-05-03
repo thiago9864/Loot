@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, Button, ScrollView } from "react-native";
+import { StyleSheet, View, Text, ScrollView, TouchableNativeFeedback } from "react-native";
 import { IndicesNavegacao } from "../navigation/IndicesNavegacao";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { FlatList } from "react-native-gesture-handler";
@@ -30,7 +30,7 @@ const ItemRenda = ({ item }) => {
     return (
         <View style={styles.item}>
             <Text style={styles.descricao}>{item.descricao}</Text>
-            <Text style={styles.valor}>$ {item.valor}</Text>
+            <Text style={styles.valor}>$ {item.valor.toFixed(2)}</Text>
         </View>
     )
 }
@@ -60,7 +60,7 @@ const geraDadosCategoria = (userData, gastos) => {
     return categoryArray
 }
 
-const Categoria = ({ item }) => {
+const Categoria = ({ categoria, gastos, navigation }) => {
 
     const styles = StyleSheet.create({
         item: {
@@ -82,7 +82,7 @@ const Categoria = ({ item }) => {
             textAlign: "right",
             fontSize: 14,
             paddingRight: 10
-      },
+        },
         chart: {
             flex: 1,
             alignItems: "baseline",
@@ -90,20 +90,54 @@ const Categoria = ({ item }) => {
         }
     })
 
-    const percentage = parseFloat(item.gasto) / parseFloat(item.renda)
+    const categoriaAttr = {
+        casa: {
+            title: "Casa",
+            backgroundColor: "#E76F5166",
+            color: "#E76F51"
+        },
+        educacao: {
+            title: "Educação",
+            backgroundColor: "#2A9D8F66",
+            color: "#2A9D8F"
+        },
+        transporte: {
+            title: "Transporte",
+            backgroundColor: "#26465366",
+            color: "#264653"
+        },
+        lazer: {
+            title: "Lazer",
+            backgroundColor: "#E9C46A66",
+            color: "#E9C46A"
+        },
+        alimentacao: {
+            title: "Alimentação",
+            backgroundColor: "#F4A26166",
+            color: "#F4A261"
+        }
+    } 
+
+    const percentage = parseFloat(categoria.gasto) / parseFloat(categoria.renda)
+    const categoryProps = categoriaAttr[categoria.categoria]
 
     return (
-        <View style={styles.item}>
-            <ProgressCircle
-                style={styles.chart}
-                progress={percentage}
-                progressColor={'rgb(134, 65, 244)'} />
+        <TouchableNativeFeedback onPress={() => navigation.navigate(IndicesNavegacao.listaGastos, gastos)}>
 
-            <Text style={styles.categoria}>{item.categoria}</Text>
-            <Text style={styles.gasto}>
-                <Text style={{ fontWeight: "bold" }}>$ {item.gasto}</Text> / $ {item.renda}
-            </Text>
-        </View>
+            <View style={{ ...styles.item, backgroundColor: categoryProps.backgroundColor }}>
+                <ProgressCircle
+                    style={styles.chart}
+                    progress={percentage}
+                    progressColor={categoryProps.color} />
+
+                <Text style={styles.categoria}>{categoryProps.title}</Text>
+                <Text style={styles.gasto}>
+                    <Text style={{ fontWeight: "bold" }}>$ {categoria.gasto.toFixed(2)} </Text>
+                    / $ {categoria.renda.toFixed(2)}
+                </Text>
+            </View>
+
+        </TouchableNativeFeedback>
     )
 }
 
@@ -201,59 +235,71 @@ const VisaoGeralScreen = (props) => {
 
     return (
         <View style={styles.container}>
-            <View style={{ alignItems: "center" }}>
+            {/* <View style={{ alignItems: "center" }}>
                 <Text>Tela de cadastro</Text>
                 <Button title={'Lista de Gastos'} onPress={onPressListaGastos} />
-            </View>
+            </View> */}
 
             <ScrollView>
-            {/* Aba de Renda */}
-            <View style={{ flex: 1 }}>
-                <View style={styles.flatlist}>
-                    <Text style={{ marginLeft: 10 }}>Renda</Text>
+                {/* Aba de Renda */}
+                <View style={{ flex: 1 }}>
+                    <View style={styles.flatlist}>
+                        <Text style={{ marginLeft: 10 }}>Rendas</Text>
 
-                    <View style={styles.lineStyle} />
+                        <View style={styles.lineStyle} />
 
-                    {showRenda ?
-                        (<Icon.Button name='angle-up' color="black" backgroundColor='#ffff' onPress={ShowHideRenda} />)
-                        : (<Icon.Button name='angle-down' color="black" backgroundColor='#ffff' onPress={ShowHideRenda} />)
-                    }
+                        {showRenda ?
+                            (<Icon.Button
+                                name='angle-up' color="black" backgroundColor='#ffff' onPress={ShowHideRenda} />)
+                            : (<Icon.Button
+                                name='angle-down' color="black" backgroundColor='#ffff' onPress={ShowHideRenda} />)
+                        }
+                    </View>
+
+                    {showRenda ? (
+                        <FlatList
+                            data={data}
+                            renderItem={({ item }) => {
+                                if (item.tipo === 1) {
+                                    return <ItemRenda item={item} />
+                                }
+                            }}
+                            keyExtractor={({ item, index }) => index}
+                        />
+                    ) : null}
                 </View>
 
-                {showRenda ? (
-                    <FlatList
-                        data={data}
-                        renderItem={({ item }) => {
-                            if (item.tipo === 1) {
-                                return <ItemRenda item={item} />
-                            }
-                        }}
-                        keyExtractor={({ item, index }) => index}
-                    />
-                ) : null}
-            </View>
+                {/* Aba de Despesas */}
+                <View style={{ flex: 2 }}>
+                    <View style={styles.flatlist}>
+                        <Text style={{ marginLeft: 10 }}>Despesas</Text>
 
-            {/* Aba de Despesas */}
-            <View style={{ flex: 2 }}>
-                <View style={styles.flatlist}>
-                    <Text style={{ marginLeft: 10 }}>Despesas</Text>
+                        <View style={{ ...styles.lineStyle, width: "64%" }} />
 
-                    <View style={{ ...styles.lineStyle, width: "64%" }} />
+                        {showGastos ?
+                            (<Icon.Button
+                                name='angle-up' color="black" backgroundColor='#ffff' onPress={ShowHideGastos} />)
+                            : (<Icon.Button
+                                name='angle-down' color="black" backgroundColor='#ffff' onPress={ShowHideGastos} />)
+                        }
+                    </View>
 
-                    {showGastos ?
-                        (<Icon.Button name='angle-up' color="black" backgroundColor='#ffff' onPress={ShowHideGastos} />)
-                        : (<Icon.Button name='angle-down' color="black" backgroundColor='#ffff' onPress={ShowHideGastos} />)
-                    }
+                    {showGastos ? (
+                        <FlatList
+                            data={geraDadosCategoria(userData, data)}
+                            renderItem={({ item }) =>
+                                <Categoria 
+                                    categoria={item}
+                                    // filtrando gastos por categoria
+                                    gastos={data.filter((gasto) => {
+                                        if (gasto.categoria == item.categoria)
+                                            return gasto
+                                    })} 
+                                    navigation={props.navigation} />}
+                            keyExtractor={({ item, index }) => index}
+                        />
+                    ) : null}
                 </View>
-
-                {showGastos ? (
-                    <FlatList
-                        data={geraDadosCategoria(userData, data)}
-                        renderItem={({ item }) => <Categoria item={item} />}
-                        keyExtractor={({ item, index }) => index}
-                    />
-                ) : null}
-            </View>
             </ScrollView>
         </View>
     );
