@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, Button } from "react-native";
+import { StyleSheet, View, Text, Button, ScrollView } from "react-native";
 import { IndicesNavegacao } from "../navigation/IndicesNavegacao";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { FlatList } from "react-native-gesture-handler";
@@ -101,8 +101,7 @@ const Categoria = ({ item }) => {
 
             <Text style={styles.categoria}>{item.categoria}</Text>
             <Text style={styles.gasto}>
-                $ {item.gasto} /
-                <Text style={{ fontWeight: "bold" }}> $ {item.renda}</Text>
+                <Text style={{ fontWeight: "bold" }}>$ {item.gasto}</Text> / $ {item.renda}
             </Text>
         </View>
     )
@@ -207,6 +206,7 @@ const VisaoGeralScreen = (props) => {
                 <Button title={'Lista de Gastos'} onPress={onPressListaGastos} />
             </View>
 
+            <ScrollView>
             {/* Aba de Renda */}
             <View style={{ flex: 1 }}>
                 <View style={styles.flatlist}>
@@ -254,6 +254,7 @@ const VisaoGeralScreen = (props) => {
                     />
                 ) : null}
             </View>
+            </ScrollView>
         </View>
     );
 };
