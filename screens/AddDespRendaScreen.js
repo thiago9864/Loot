@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, TextInput, Button, ScrollView } from "react-native";
+import { StyleSheet, View, TextInput,Text, Button, ScrollView } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import SegmentedControlTab from 'react-native-segmented-control-tab';
 import Global from "../Global";
@@ -51,13 +51,21 @@ const InputValue = ({ state, setState }) => {
 }
 
 const AddDespRendaScreen = () => {
-
-    const [despesa, setDespesa] = useState(
+    const [recorrencia, setRecorrencia] = useState(
         {
             value: 0,
             description: "",
             type: 0
         })
+    const [despesa, setDespesa] = useState(
+        {
+            value: 0,
+            description: "",
+            type: 0,
+            recorrencia:""
+        })
+
+    
 
     const styles = StyleSheet.create({
         input: {
@@ -83,7 +91,14 @@ const AddDespRendaScreen = () => {
             height: 50,
             borderColor: Colors.colorPrimary,
             backgroundColor: Colors.colorPrimary
+        },
+        textStyle: {
+            flex: 1,
+            fontSize: 18,
+            textAlign: 'center',
+            lineHeight: 40
         }
+    
     })
 
     return (
@@ -107,7 +122,17 @@ const AddDespRendaScreen = () => {
                 selectedIndex={despesa.type}
                 onTabPress={value => { setDespesa({ ...despesa, type: value }) }}
             />
-
+            <Text style={styles.textStyle}>Recorrência</Text> 
+            <SegmentedControlTab
+                values={['Uma vez', 'Semanal','Mensal','Anual','Outro']}
+                tabsContainerStyle={{ margin: 10, marginTop: 20 }}
+                tabStyle={styles.tabStyle}
+                activeTabStyle={styles.activeTabStyle}
+                tabTextStyle={{ color: Colors.colorPrimary }}
+                selectedIndex={despesa.recorrencia}
+                onTabPress={value => { setDespesa({ ...despesa,recorrencia: value }) }}
+                
+            />
             <Icon.Button
                 name="plus-circle-outline"
                 backgroundColor="#ffff"
@@ -124,6 +149,7 @@ AddDespRendaScreen.navigationOptions = () => {
         title: "Adicionar Despesa ou Renda",
     };
 };
+
 
 const styles = StyleSheet.create({
     container: {
