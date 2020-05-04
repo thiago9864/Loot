@@ -5,9 +5,11 @@
 
 Repositório do projeto de codinome "Loot" desenvolvido no Mega Hack 2º Edição - Desafio Flourish
 
-<img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/apresentacao.gif" alt="apresentacao" title="inicio" align="center" />
+<p align="center">
+<img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/apresentacao.gif" alt="apresentacao" title="inicio" height=400 />
+ </p>
 
-## Table of Contents
+## Sumário
 
 - [Instalação](#installation)
 - [Recursos](#features)
@@ -22,20 +24,44 @@ Repositório do projeto de codinome "Loot" desenvolvido no Mega Hack 2º Ediçã
 4. Execute `npm install` , e todos os requisitos serão instalados automáticamente.
 5. Para executar em um dispositivo Android execute `npm run android` e para um dispositivo IOS execute `npm run ios`
 
-## Recursos
+## Conteúdo
 
 ### Adição de Gastos/Renda
 
-O aplicativo permite de forma simples e direta a inserção de qualquer gasto ou renda que ele obter, podendo selecionar o a categoria em que a entrada se encaixa, bem como a sua recorrência e data.
+O Loot permite de forma simples e direta a inserção de qualquer gasto ou renda que ele obter, podendo selecionar o a categoria em que a entrada se encaixa, bem como a sua recorrência e data.
 
-<img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/entrada.png" alt="entrada" title="entrada" align="center" height=300/>
+<p align="center">
+<img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/entrada.png" alt="entrada" title="entrada" height=400/>
+</p>
 
 ### Acompanhamento do seu histórico
 
-O aplicativo auxilia no acompanhamento de suas despesas, com a geração de gráficos de gastos para cada categoria, conjunto a sua lista de gastos detalhados. A partir de um menu lateral também é possível visualizar o seu histórico para cada mês de utilização.
+O Loot auxilia no acompanhamento de suas despesas, com a geração de gráficos de gastos para cada categoria, conjunto a sua lista de gastos detalhados. A partir de um menu lateral também é possível visualizar o seu histórico para cada mês de utilização.
 
-<img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/visaoGeral.png" alt="visaoGeral" title="visaoGeral" align="left" />
+<p align="center" float="center">
+<img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/visaoGeral.png" alt="visaoGeral" title="visaoGeral" align="left" height=400/>
+  
+<img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/despesaCategoria.png" alt="despesaCategoria" title="despesaCategoria" height=400/>
 
-<img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/despesaCategoria.png" alt="despesaCategoria" title="despesaCategoria" align="center" />
+<img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/listaMeses.png" alt="listaMeses" title="listaMeses" height=400/>
+</p>
 
-<img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/listaMeses.png" alt="listaMeses" title="listaMeses" align="right" />
+### Quests
+
+Para aumentar a sua experiência de organização financeira o Loot permite que você crie quests, que são objetivos que você pode cumprir se a sua saúde financeira se manter organizada. Assim, conforme você progride na sua quest, o seu personagem o acompanha ao longo da exploração do mapa.
+
+<p align="center" float="center">
+<img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/Map.png" alt="mapa" title="mapa" height=400/>
+
+<img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/questList.png" alt="quests" title="quests" height=400/>
+</p>
+
+### Recompensas
+
+O uso cotidiano do Loot pode gerar recompensas que podem ser utilizadas em seu aplicativo. O Login diário, além de apresentar um resumo de seu progresso, irá te recompensar com joias, a moeda virtual do Loot. As joias podem ser utilizadas na loja para comprar adereços para a personalização de seu personagem.
+
+<p align="center" float="center">
+<img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/resumo.png" alt="resumo" title="resumo" height=400/>
+
+<img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/Shop.png" alt="shop" title="shop" height=400/>
+</p>
