@@ -56,13 +56,21 @@ const InputValue = ({ state, setState }) => {
 }
 
 const AddDespRendaScreen = () => {
-
-    const [despesa, setDespesa] = useState(
+    const [recorrencia, setRecorrencia] = useState(
         {
             value: 0,
             description: "",
             type: 0
         })
+    const [despesa, setDespesa] = useState(
+        {
+            value: 0,
+            description: "",
+            type: 0,
+            recorrencia:""
+        })
+
+    
 
     const styles = StyleSheet.create({
         input: {
@@ -96,7 +104,14 @@ const AddDespRendaScreen = () => {
             color: Colors.black,
             fontFamily: Fonts.openSansRegular,
             fontSize: 20,
+        },
+        textStyle: {
+            flex: 1,
+            fontSize: 18,
+            textAlign: 'center',
+            lineHeight: 40
         }
+    
     })
 
     return (
@@ -128,6 +143,17 @@ const AddDespRendaScreen = () => {
                 horizontal={true}
             />
 
+            <Text style={styles.textStyle}>Recorrência</Text> 
+            <SegmentedControlTab
+                values={['Uma vez', 'Semanal','Mensal','Anual','Outro']}
+                tabsContainerStyle={{ margin: 10, marginTop: 20 }}
+                tabStyle={styles.tabStyle}
+                activeTabStyle={styles.activeTabStyle}
+                tabTextStyle={{ color: Colors.colorPrimary }}
+                selectedIndex={despesa.recorrencia}
+                onTabPress={value => { setDespesa({ ...despesa,recorrencia: value }) }}
+                
+            />
             <Icon.Button
                 name="plus"
                 backgroundColor="#ffff"
@@ -145,5 +171,15 @@ AddDespRendaScreen.navigationOptions = () => {
         title: "Adicionar Despesa ou Renda",
     };
 };
+
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
+});
 
 export default AddDespRendaScreen;
