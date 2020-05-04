@@ -11,10 +11,9 @@ Repositório do projeto de codinome "Loot" desenvolvido no Mega Hack 2º Ediçã
 
 ## Sumário
 
-- [Instalação](#installation)
-- [Recursos](#features)
-- [Time](#team)
-- [Licença](#license)
+- [Instalação](#instalação)
+- [Conteúdo](#conteúdo)
+- [Time](#time)
 
 ## Instalação
 
