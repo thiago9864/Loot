@@ -28,7 +28,7 @@ Repositório do projeto de codinome "Loot" desenvolvido no Mega Hack 2º Ediçã
 
 O aplicativo permite de forma simples e direta a inserção de qualquer gasto ou renda que ele obter, podendo selecionar o a categoria em que a entrada se encaixa, bem como a sua recorrência e data.
 
-<img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/entrada.png" alt="entrada" title="entrada" align="center" />
+<img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/entrada.png" alt="entrada" title="entrada" align="center" height=300/>
 
 ### Acompanhamento do seu histórico
 
