@@ -11,10 +11,9 @@ Repositório do projeto de codinome "Loot" desenvolvido no Mega Hack 2º Ediçã
 
 ## Sumário
 
-- [Instalação](#installation)
-- [Recursos](#features)
-- [Time](#team)
-- [Licença](#license)
+- [Instalação](#instalação)
+- [Conteúdo](#conteúdo)
+- [Time](#time)
 
 ## Instalação
 
@@ -28,7 +27,7 @@ Repositório do projeto de codinome "Loot" desenvolvido no Mega Hack 2º Ediçã
 
 ### Adição de Gastos/Renda
 
-O Loot permite de forma simples e direta a inserção de qualquer gasto ou renda que ele obter, podendo selecionar o a categoria em que a entrada se encaixa, bem como a sua recorrência e data.
+O Loot permite de forma simples e direta a inserção de qualquer gasto ou renda que ele obter, podendo selecionar a categoria em que a entrada se encaixa, bem como a sua recorrência e data.
 
 <p align="center">
 <img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/entrada.png" alt="entrada" title="entrada" height=400/>
@@ -58,7 +57,7 @@ Para aumentar a sua experiência de organização financeira o Loot permite que 
 
 ### Recompensas
 
-O uso cotidiano do Loot pode gerar recompensas que podem ser utilizadas em seu aplicativo. O Login diário, além de apresentar um resumo de seu progresso, irá te recompensar com joias, a moeda virtual do Loot. As joias podem ser utilizadas na loja para comprar adereços para a personalização de seu personagem.
+O uso cotidiano do Loot pode gerar recompensas que podem ser utilizadas em seu aplicativo. O Login diário, além de apresentar um resumo de seu progresso ele irá te recompensar com joias, a moeda virtual do Loot. As joias podem ser utilizadas na loja para comprar adereços para a personalização de seu personagem.
 
 <p align="center" float="center">
 <img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/resumo.png" alt="resumo" title="resumo" height=400/>
@@ -70,5 +69,5 @@ O uso cotidiano do Loot pode gerar recompensas que podem ser utilizadas em seu a
 
 | <a href="https://github.com/gabic6" target="_blank">**Gabriele Iwashima**</a> | <a href="https://github.com/LucasRibP" target="_blank">**Lucas Ribeiro**</a> | <a href="https://github.com/thiago9864" target="_blank">**Thiago de Almeida**</a> | <a href="https://github.com/Victoraq" target="_blank">**Victor Aquiles Alencar**</a> |
 | :---: |:---:| :---: | :---: |
-| [![Gabriele](https://avatars3.githubusercontent.com/u/42469146?s=200&u=5d0f11e371b218401bcbf1c98cc648b6251ccb02&v=4)](https://github.com/gabic6)    | [![Lucas](https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/mago.png)](https://github.com/LucasRibP) | [![Thiago](https://avatars0.githubusercontent.com/u/28913499?s=200&u=a29c0a4dc5e80735ebbdf6efb564274100da1083&v=4&)](https://github.com/thiago9864)  | [![Victor](https://avatars1.githubusercontent.com/u/25804213?s=200&u=f21c12ee134dfd5f5dd28070247beaebbdf5f73c&v=4)](https://github.com/Victoraq)  |
+| [![Gabriele](https://avatars3.githubusercontent.com/u/42469146?s=200&u=5d0f11e371b218401bcbf1c98cc648b6251ccb02&v=4)](https://github.com/gabic6)    | <a href="https://github.com/LucasRibP"><img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/mago.png" height=200/> </a> | [![Thiago](https://avatars0.githubusercontent.com/u/28913499?s=200&u=a29c0a4dc5e80735ebbdf6efb564274100da1083&v=4&)](https://github.com/thiago9864)  | [![Victor](https://avatars1.githubusercontent.com/u/25804213?s=200&u=f21c12ee134dfd5f5dd28070247beaebbdf5f73c&v=4)](https://github.com/Victoraq)  |
 | <a href="https://github.com/gabic6" target="_blank">`Perfil Github`</a> | <a href="https://github.com/LucasRibP" target="_blank">`Perfil Github`</a> | <a href="https://github.com/thiago9864" target="_blank">`Perfil Github`</a> | <a href="https://github.com/Victoraq" target="_blank">`Perfil Github`</a> |
