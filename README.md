@@ -27,7 +27,7 @@ Repositório do projeto de codinome "Loot" desenvolvido no Mega Hack 2º Ediçã
 
 ### Adição de Gastos/Renda
 
-O Loot permite de forma simples e direta a inserção de qualquer gasto ou renda que ele obter, podendo selecionar o a categoria em que a entrada se encaixa, bem como a sua recorrência e data.
+O Loot permite de forma simples e direta a inserção de qualquer gasto ou renda que ele obter, podendo selecionar a categoria em que a entrada se encaixa, bem como a sua recorrência e data.
 
 <p align="center">
 <img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/entrada.png" alt="entrada" title="entrada" height=400/>
@@ -57,7 +57,7 @@ Para aumentar a sua experiência de organização financeira o Loot permite que 
 
 ### Recompensas
 
-O uso cotidiano do Loot pode gerar recompensas que podem ser utilizadas em seu aplicativo. O Login diário, além de apresentar um resumo de seu progresso, irá te recompensar com joias, a moeda virtual do Loot. As joias podem ser utilizadas na loja para comprar adereços para a personalização de seu personagem.
+O uso cotidiano do Loot pode gerar recompensas que podem ser utilizadas em seu aplicativo. O Login diário, além de apresentar um resumo de seu progresso ele irá te recompensar com joias, a moeda virtual do Loot. As joias podem ser utilizadas na loja para comprar adereços para a personalização de seu personagem.
 
 <p align="center" float="center">
 <img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/resumo.png" alt="resumo" title="resumo" height=400/>
