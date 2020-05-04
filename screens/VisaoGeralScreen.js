@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, ScrollView, TouchableNativeFeedback } from "rea
 import { IndicesNavegacao } from "../navigation/IndicesNavegacao";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { FlatList } from "react-native-gesture-handler";
-import { ProgressCircle } from 'react-native-svg-charts'
+import { ProgressCircle, StackedBarChart } from 'react-native-svg-charts'
 
 const ItemRenda = ({ item }) => {
 
@@ -35,12 +35,12 @@ const ItemRenda = ({ item }) => {
     )
 }
 
-const geraDadosCategoria = (userData, gastos) => {
+const geraDadosCategoria = (categorias, gastos) => {
 
     let categoryData = {}
 
     // inicializando dados de cada categoria
-    Object.entries(userData).forEach(([key, value]) => {
+    Object.entries(categorias).forEach(([key, value]) => {
         categoryData[key] = { renda: value, gasto: 0.0 }
     })
 
@@ -116,7 +116,7 @@ const Categoria = ({ categoria, gastos, navigation }) => {
             backgroundColor: "#F4A26166",
             color: "#F4A261"
         }
-    } 
+    }
 
     console.log('categoria:', categoria);
 
@@ -149,6 +149,37 @@ const Categoria = ({ categoria, gastos, navigation }) => {
     )
 }
 
+const BarraDeGastos = ({ gastos }) => {
+
+    const categorias = ["casa", "educacao", "transporte", "lazer", "alimentacao", "rendaRestante"]
+    const colors = ["#E76F51", "#2A9D8F", "#264653", "#E9C46A", "#F4A261", "#ffff"]
+    let valores = { rendaRestante: 0.0 }
+
+    gastos.map(item => {
+        if (!(item.categoria in valores)) {
+            valores[item.categoria] = item.gasto // gasto de cada categoria
+            valores["rendaRestante"] += item.renda - item.gasto // renda restante de cada categoria
+        } else {
+            valores["rendaRestante"] -= item.gasto
+            valores[item.categoria] += item.gasto 
+        }
+    })
+
+    return (
+        <View style={{ flex: 1, margin: 10}}>
+
+            <StackedBarChart
+                style={{ height: 40 }}
+                keys={categorias}
+                colors={colors}
+                data={[valores]}
+                showGrid={false}
+                horizontal={true}
+            />
+        </View>
+    )
+}
+
 const VisaoGeralScreen = (props) => {
 
     const [showRenda, setShowRenda] = useState(true)
@@ -171,17 +202,27 @@ const VisaoGeralScreen = (props) => {
     }
 
     const userData = {
-        casa: 900.00,
-        educacao: 150.00,
-        transporte: 150.00,
-        lazer: 100.00,
-        alimentacao: 400.00
+        renda: 2600.00,
+        categorias: {
+            casa: 900.00,
+            educacao: 150.00,
+            transporte: 150.00,
+            lazer: 120.00,
+            alimentacao: 400.00
+        }
     }
 
     const data = [
         {
             valor: 80.00,
             descricao: "Conta de Luz",
+            tipo: 0,
+            categoria: "casa",
+            data: "05-02-2020"
+        },
+        {
+            valor: 800.00,
+            descricao: "Aluguel",
             tipo: 0,
             categoria: "casa",
             data: "05-02-2020"
@@ -215,7 +256,7 @@ const VisaoGeralScreen = (props) => {
             data: "05-02-2020"
         },
         {
-            valor: 1800.00,
+            valor: 18.00,
             descricao: "Bilhetes de Jogo do Bicho",
             tipo: 0,
             categoria: "lazer",
@@ -270,6 +311,9 @@ const VisaoGeralScreen = (props) => {
             </View> */}
 
             <ScrollView>
+
+                <BarraDeGastos gastos={geraDadosCategoria(userData.categorias, data)} />
+
                 {/* Aba de Renda */}
                 <View style={{ flex: 1 }}>
                     <View style={styles.flatlist}>
@@ -303,7 +347,7 @@ const VisaoGeralScreen = (props) => {
                     <View style={styles.flatlist}>
                         <Text style={{ marginLeft: 10 }}>Despesas</Text>
 
-                        <View style={{ ...styles.lineStyle, width: "64%" }} />
+                        <View style={{ ...styles.lineStyle, width: "65.8%" }} />
 
                         {showGastos ?
                             (<Icon.Button
@@ -315,15 +359,15 @@ const VisaoGeralScreen = (props) => {
 
                     {showGastos ? (
                         <FlatList
-                            data={geraDadosCategoria(userData, data)}
+                            data={geraDadosCategoria(userData.categorias, data)}
                             renderItem={({ item }) =>
-                                <Categoria 
+                                <Categoria
                                     categoria={item}
                                     // filtrando gastos por categoria
                                     gastos={data.filter((gasto) => {
                                         if (gasto.categoria == item.categoria)
                                             return gasto
-                                    })} 
+                                    })}
                                     navigation={props.navigation} />}
                             keyExtractor={({ item, index }) => index}
                         />
