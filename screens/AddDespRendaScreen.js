@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, TextInput, ScrollView } from "react-native";
+import { StyleSheet, View, Text, TextInput, Button, ScrollView } from "react-native";
 import SegmentedControlTab from 'react-native-segmented-control-tab';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, Fonts } from '../assets/Resources';
+import CustomDatePicker from "../components/CustomDatePicker";
 import Global from "../Global";
 
 const InputValue = ({ state, setState }) => {
@@ -72,8 +73,8 @@ const AddDespRendaScreen = () => {
             paddingLeft: 15,
             backgroundColor: '#dcdcdc',
             color: '#505050',
-            fontFamily: "Roboto",
-            fontSize: 20
+            fontFamily: Fonts.robotoRegular,
+            fontSize: 20,
         },
         tabStyle: {
             padding: 10,
@@ -87,6 +88,14 @@ const AddDespRendaScreen = () => {
             height: 50,
             borderColor: Colors.colorPrimary,
             backgroundColor: Colors.colorPrimary
+        },
+        labelData: {
+            width: '100%',
+            textAlign: 'center',
+            paddingVertical: 3,
+            color: Colors.black,
+            fontFamily: Fonts.openSansRegular,
+            fontSize: 20,
         }
     })
 
@@ -119,6 +128,15 @@ const AddDespRendaScreen = () => {
                 color="#d3d3d3"
                 onPress={() => { console.log(despesa) }}
             />
+
+            
+
+            <CustomDatePicker
+                onSelectDate={(date) => { console.log('data:', date); }}
+                titulo={"Data da Despesa"}
+                value={null}//data no formato DD/MM/YYYY, se estiver nulo ele pega a data atual
+                horizontal={true}
+            />
         </ScrollView>
     )
 };
@@ -128,14 +146,5 @@ AddDespRendaScreen.navigationOptions = () => {
         title: "Adicionar Despesa ou Renda",
     };
 };
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    }
-});
 
 export default AddDespRendaScreen;

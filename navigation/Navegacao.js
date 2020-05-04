@@ -72,11 +72,11 @@ function CustomTabBar({ state, descriptors, navigation }) {
                 let icone = '';
 
                 if (route.name == IndicesNavegacao.visaoGeralStack) {
-                    icone = 'map';
+                    icone = 'list';
                 } else if (route.name == IndicesNavegacao.addDespesaRenda) {
                     icone = 'add';
                 } else if (route.name == IndicesNavegacao.mapa) {
-                    icone = 'list';
+                    icone = 'map';
                 }
 
                 return (
