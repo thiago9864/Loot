@@ -118,11 +118,19 @@ const Categoria = ({ categoria, gastos, navigation }) => {
         }
     } 
 
-    const percentage = parseFloat(categoria.gasto) / parseFloat(categoria.renda)
-    const categoryProps = categoriaAttr[categoria.categoria]
+    console.log('categoria:', categoria);
+
+    const percentage = parseFloat(categoria.gasto) / parseFloat(categoria.renda);
+    const categoryProps = categoriaAttr[categoria.categoria];
+    
+    const params = {
+        categoria : categoria,
+        categoryProps: categoryProps,
+        gastos : gastos
+    }
 
     return (
-        <TouchableNativeFeedback onPress={() => navigation.navigate(IndicesNavegacao.listaGastos, gastos)}>
+        <TouchableNativeFeedback onPress={() => navigation.navigate(IndicesNavegacao.listaGastos, params)}>
 
             <View style={{ ...styles.item, backgroundColor: categoryProps.backgroundColor }}>
                 <ProgressCircle
@@ -180,7 +188,7 @@ const VisaoGeralScreen = (props) => {
         },
         {
             valor: 100.00,
-            descricao: "Coach",
+            descricao: "Coach (Samuel)",
             tipo: 0,
             categoria: "educacao",
             data: "05-02-2020"
@@ -226,7 +234,28 @@ const VisaoGeralScreen = (props) => {
             tipo: 1,
             categoria: "outros",
             data: "05-02-2020"
-        }
+        },
+        {
+            valor: 700.00,
+            descricao: "Aluguel",
+            tipo: 0,
+            categoria: "casa",
+            data: "05-02-2020"
+        },
+        {
+            valor: 150.00,
+            descricao: "Condomínio",
+            tipo: 0,
+            categoria: "casa",
+            data: "05-02-2020"
+        },
+        {
+            valor: 99.00,
+            descricao: "Internet",
+            tipo: 0,
+            categoria: "casa",
+            data: "05-02-2020"
+        },
     ]
 
     let onPressListaGastos = () => {
