@@ -39,11 +39,11 @@ O Loot permite de forma simples e direta a inserção de qualquer gasto ou renda
 O Loot auxilia no acompanhamento de suas despesas, com a geração de gráficos de gastos para cada categoria, conjunto a sua lista de gastos detalhados. A partir de um menu lateral também é possível visualizar o seu histórico para cada mês de utilização.
 
 <p align="center" float="center">
-<img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/visaoGeral.png" alt="visaoGeral" title="visaoGeral" align="left" height=400/>
+<img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/visaoGeral.png" alt="visaoGeral" title="visaoGeral" align="left" height=400 align="left"/>
   
-<img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/despesaCategoria.png" alt="despesaCategoria" title="despesaCategoria" height=400/>
+<img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/despesaCategoria.png" alt="despesaCategoria" title="despesaCategoria" height=400 align="center"/>
 
-<img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/listaMeses.png" alt="listaMeses" title="listaMeses" height=400/>
+<img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/listaMeses.png" alt="listaMeses" title="listaMeses" height=400 align="right"/>
 </p>
 
 ### Quests
@@ -65,3 +65,10 @@ O uso cotidiano do Loot pode gerar recompensas que podem ser utilizadas em seu a
 
 <img src="https://github.com/thiago9864/Capivara-Hackaton/blob/readme/images/Shop.png" alt="shop" title="shop" height=400/>
 </p>
+
+### Time
+
+| <a href="https://github.com/gabic6" target="_blank">**Gabriele Iwashima**</a> | <a href="https://github.com/LucasRibP" target="_blank">**Lucas Ribeiro**</a> | <a href="https://github.com/thiago9864" target="_blank">**Thiago de Almeida**</a> | <a href="https://github.com/Victoraq" target="_blank">**Victor Aquiles Alencar**</a> |
+| :---: |:---:| :---: | :---: |
+| [![Gabriele](https://avatars3.githubusercontent.com/u/42469146?s=200&u=5d0f11e371b218401bcbf1c98cc648b6251ccb02&v=4)](https://github.com/gabic6)    | [![Lucas](https://avatars0.githubusercontent.com/u/44446242?s=10&v=4)](https://github.com/LucasRibP) | [![Thiago](https://avatars0.githubusercontent.com/u/28913499?s=200&u=a29c0a4dc5e80735ebbdf6efb564274100da1083&v=4&)](https://github.com/thiago9864)  | [![Victor](https://avatars1.githubusercontent.com/u/25804213?s=200&u=f21c12ee134dfd5f5dd28070247beaebbdf5f73c&v=4)](https://github.com/Victoraq)  |
+| <a href="https://github.com/gabic6" target="_blank">`Perfil Github`</a> | <a href="https://github.com/LucasRibP" target="_blank">`Perfil Github`</a> | <a href="https://github.com/thiago9864" target="_blank">`Perfil Github`</a> | <a href="https://github.com/Victoraq" target="_blank">`Perfil Github`</a> |
