@@ -118,8 +118,6 @@ const Categoria = ({ categoria, gastos, navigation }) => {
         }
     }
 
-    console.log('categoria:', categoria);
-
     const percentage = parseFloat(categoria.gasto) / parseFloat(categoria.renda);
     const categoryProps = categoriaAttr[categoria.categoria];
     
@@ -204,7 +202,7 @@ const VisaoGeralScreen = (props) => {
     const userData = {
         renda: 2600.00,
         categorias: {
-            casa: 900.00,
+            casa: 2000.00,
             educacao: 150.00,
             transporte: 150.00,
             lazer: 120.00,
@@ -305,10 +303,6 @@ const VisaoGeralScreen = (props) => {
 
     return (
         <View style={styles.container}>
-            {/* <View style={{ alignItems: "center" }}>
-                <Text>Tela de cadastro</Text>
-                <Button title={'Lista de Gastos'} onPress={onPressListaGastos} />
-            </View> */}
 
             <ScrollView>
 
