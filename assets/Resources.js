@@ -43,8 +43,8 @@ export const FontMap = {
 };
 
 export var Colors = {
-    colorPrimary: "#66b43a",
-    colorPrimaryDark: "#66b43a",
+    colorPrimary: "#7ed877",
+    colorPrimaryDark: "#7ed877",
     colorAccent: "#64d27c",
     windowBackground: "ffffff",
 

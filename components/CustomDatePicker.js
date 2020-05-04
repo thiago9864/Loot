@@ -279,13 +279,13 @@ const StyleHor = StyleSheet.create({
     linha: {
         width: '100%',
         height: 1,
-        backgroundColor: Colors.verdeBorda,
+        backgroundColor: Colors.colorPrimary,
         marginBottom: 8,
     },
     selecionado: {
         position: 'absolute',
         height: 40 * 3,
-        backgroundColor: Colors.verde2,
+        backgroundColor: Colors.colorPrimary,
         alignSelf: 'center',
         borderRadius: 8
     },

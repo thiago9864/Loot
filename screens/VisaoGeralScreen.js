@@ -93,13 +93,13 @@ const Categoria = ({ categoria, gastos, navigation }) => {
     const categoriaAttr = {
         casa: {
             title: "Casa",
-            backgroundColor: "#E76F5166",
-            color: "#E76F51"
+            backgroundColor: "#ed727266",
+            color: "#ed7272"
         },
         educacao: {
             title: "Educação",
-            backgroundColor: "#2A9D8F66",
-            color: "#2A9D8F"
+            backgroundColor: "#7d7aef66",
+            color: "#7d7aef"
         },
         transporte: {
             title: "Transporte",
@@ -108,13 +108,13 @@ const Categoria = ({ categoria, gastos, navigation }) => {
         },
         lazer: {
             title: "Lazer",
-            backgroundColor: "#E9C46A66",
-            color: "#E9C46A"
+            backgroundColor: "#bead5566",
+            color: "#bead55"
         },
         alimentacao: {
             title: "Alimentação",
-            backgroundColor: "#F4A26166",
-            color: "#F4A261"
+            backgroundColor: "#e2b18766",
+            color: "#e2b187"
         }
     }
 
@@ -150,7 +150,7 @@ const Categoria = ({ categoria, gastos, navigation }) => {
 const BarraDeGastos = ({ gastos }) => {
 
     const categorias = ["casa", "educacao", "transporte", "lazer", "alimentacao", "rendaRestante"]
-    const colors = ["#E76F51", "#2A9D8F", "#264653", "#E9C46A", "#F4A261", "#ffff"]
+    const colors = ["#ed7272", "#7d7aef", "#264653", "#bead55", "#e2b187", "#ffff"]
     let valores = { rendaRestante: 0.0 }
 
     gastos.map(item => {
@@ -227,49 +227,49 @@ const VisaoGeralScreen = (props) => {
         },
         {
             valor: 100.00,
-            descricao: "Coach (Samuel)",
+            descricao: "Curso de Inglês",
             tipo: 0,
             categoria: "educacao",
             data: "05-02-2020"
         },
         {
             valor: 100.00,
-            descricao: "Japones do Cleber",
+            descricao: "Comida Japonesa",
             tipo: 0,
             categoria: "alimentacao",
             data: "05-02-2020"
         },
         {
             valor: 85.50,
-            descricao: "Mais uma Skin da Lux",
+            descricao: "Show",
             tipo: 0,
             categoria: "lazer",
             data: "05-02-2020"
         },
         {
             valor: 84.50,
-            descricao: "Uber",
+            descricao: "Ônibus de Viagem",
             tipo: 0,
             categoria: "transporte",
             data: "05-02-2020"
         },
         {
             valor: 18.00,
-            descricao: "Bilhetes de Jogo do Bicho",
+            descricao: "Entrada do Parque",
             tipo: 0,
             categoria: "lazer",
             data: "05-02-2020"
         },
         {
             valor: 800.00,
-            descricao: "Jogo do Bicho",
+            descricao: "Freelancer",
             tipo: 1,
             categoria: "outros",
             data: "05-02-2020"
         },
         {
             valor: 1800.00,
-            descricao: "Agiota",
+            descricao: "Salário",
             tipo: 1,
             categoria: "outros",
             data: "05-02-2020"

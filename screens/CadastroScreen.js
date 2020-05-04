@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
         marginTop: 5,
         marginBottom: 5,
         borderRadius: 10,
-        backgroundColor: '#dcdcdc',
+        backgroundColor: '#F0F0F0',
         color: '#505050',
         fontFamily: Fonts.robotoRegular,
         fontSize: 15

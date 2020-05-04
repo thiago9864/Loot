@@ -105,7 +105,7 @@ const AddDespRendaScreen = () => {
 
             <TextInput
                 placeholder="Descrição"
-                placeholderTextColor="#d3d3d3"
+                placeholderTextColor="#a9a9a9"
                 underlineColorAndroid="transparent"
                 style={styles.input}
                 onChangeText={text => setDespesa({ ...despesa, description: text })}>
@@ -121,6 +121,13 @@ const AddDespRendaScreen = () => {
                 onTabPress={value => { setDespesa({ ...despesa, type: value }) }}
             />
 
+            <CustomDatePicker
+                onSelectDate={(date) => { console.log('data:', date); }}
+                titulo={"Data da Despesa"}
+                value={null}//data no formato DD/MM/YYYY, se estiver nulo ele pega a data atual
+                horizontal={true}
+            />
+
             <Icon.Button
                 name="plus"
                 backgroundColor="#ffff"
@@ -129,14 +136,6 @@ const AddDespRendaScreen = () => {
                 onPress={() => { console.log(despesa) }}
             />
 
-            
-
-            <CustomDatePicker
-                onSelectDate={(date) => { console.log('data:', date); }}
-                titulo={"Data da Despesa"}
-                value={null}//data no formato DD/MM/YYYY, se estiver nulo ele pega a data atual
-                horizontal={true}
-            />
         </ScrollView>
     )
 };
