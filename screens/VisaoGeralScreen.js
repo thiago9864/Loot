@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, ScrollView, TouchableNativeFeedback } from "react-native";
+import { StyleSheet, View, Text, Image, ScrollView, TouchableNativeFeedback } from "react-native";
 import { IndicesNavegacao } from "../navigation/IndicesNavegacao";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { FlatList } from "react-native-gesture-handler";
@@ -164,7 +164,7 @@ const BarraDeGastos = ({ gastos }) => {
     })
 
     return (
-        <View style={{ flex: 1, margin: 10}}>
+        <View style={{ flex: 1, margin: 10, marginTop: 0}}>
 
             <StackedBarChart
                 style={{ height: 40 }}
@@ -306,6 +306,8 @@ const VisaoGeralScreen = (props) => {
 
             <ScrollView>
 
+                <Image style={styles.image} source={require("../assets/char.png")}/>
+
                 <BarraDeGastos gastos={geraDadosCategoria(userData.categorias, data)} />
 
                 {/* Aba de Renda */}
@@ -395,6 +397,12 @@ const styles = StyleSheet.create({
         height: 1,
         width: "70%",
         margin: 10
+    },
+    image: {
+        flex: 1,
+        height: 170,
+        width: "100%",
+        marginBottom: 10
     }
 });
 
